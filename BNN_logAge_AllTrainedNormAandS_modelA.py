@@ -39,8 +39,13 @@ def get_data(input_data):
 
     loggTrain = np.array(train_dataset['LOGG_NORM']).astype(floatX)
     teffTrain = np.array(train_dataset['TEFF_NORM']).astype(floatX)
-    alphamTrain = np.array(train_dataset['ALPHA_M_NORM']).astype(floatX)
-    mhTrain = np.array(train_dataset['M_H_NORM']).astype(floatX)
+    mgfeTrain = np.array(train_dataset['MG_FE_NORM']).astype(floatX)
+    #use mg_h, fe_h, c_h, n_h, so no c_fe, n_fe no alpha_m either
+    # use asteroseimic distance for shuffling
+    # correct the G magnitude using the code online
+    # for now make it work this way
+    # then change the mags and update c/fe -> c/h
+    fehTrain = np.array(train_dataset['FE_H_NORM']).astype(floatX)
     cfeTrain = np.array(train_dataset['C_FE_NORM']).astype(floatX)
     nfeTrain = np.array(train_dataset['N_FE_NORM']).astype(floatX)
     gmagTrain = np.array(train_dataset['G_NORM']).astype(floatX)
@@ -52,8 +57,8 @@ def get_data(input_data):
 
     loggTrain_err = np.array(train_dataset['LOGG_ERR_NORM']).astype(floatX)
     teffTrain_err = np.array(train_dataset['TEFF_ERR_NORM']).astype(floatX)
-    alphamTrain_err = np.array(train_dataset['ALPHA_M_ERR_NORM']).astype(floatX)
-    mhTrain_err = np.array(train_dataset['M_H_ERR_NORM']).astype(floatX)
+    mgfeTrain_err = np.array(train_dataset['MG_FE_ERR_NORM']).astype(floatX)
+    fehTrain_err = np.array(train_dataset['FE_H_ERR_NORM']).astype(floatX)
     cfeTrain_err = np.array(train_dataset['C_FE_ERR_NORM']).astype(floatX)
     nfeTrain_err = np.array(train_dataset['N_FE_ERR_NORM']).astype(floatX)
     gmagTrain_err = np.array(train_dataset['G_ERR_NORM']).astype(floatX)
@@ -66,9 +71,9 @@ def get_data(input_data):
     logAgeTrain = np.array(train_dataset['logAge']).astype(floatX)
     logAgeTrain_err =  np.array(train_dataset['logAgeErr']).astype(floatX)
 
-    inputsTrain = np.column_stack((loggTrain, teffTrain, alphamTrain, mhTrain, cfeTrain, nfeTrain, \
+    inputsTrain = np.column_stack((loggTrain, teffTrain, mgfeTrain, fehTrain, cfeTrain, nfeTrain, \
                               gmagTrain, bpmagTrain, rpmagTrain, jmagTrain, hmagTrain, kmagTrain))
-    errInputsTrain = np.column_stack((loggTrain_err, teffTrain_err, alphamTrain_err, mhTrain_err, cfeTrain_err, nfeTrain_err, \
+    errInputsTrain = np.column_stack((loggTrain_err, teffTrain_err, mgfeTrain_err, fehTrain_err, cfeTrain_err, nfeTrain_err, \
                                   gmagTrain_err, bpmagTrain_err, rpmagTrain_err, jmagTrain_err, \
                                   hmagTrain_err, kmagTrain_err))
 
