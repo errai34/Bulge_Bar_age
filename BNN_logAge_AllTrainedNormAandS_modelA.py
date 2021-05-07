@@ -10,7 +10,7 @@ from pymc3.theanof import set_tt_rng, MRG_RandomStreams
 from warnings import filterwarnings
 from collections import defaultdict
 import pickle
-
+#imhere
 filterwarnings('ignore')
 
 np.random.seed(1234)
@@ -93,7 +93,7 @@ def get_data(input_data):
 
     return inputsTrain, errInputsTrain, targetsTrain, errTargetsTrain
 
-data = './HBNN_train_data/AllTrainedNormAugShuffled.csv'
+data = './HBNN_train_data/AllTrainedNormAugShuffled_test.csv'
 # Only use two small datasets for testing purposes
 inputsTrain, errInputsTrain, targetsTrain, errTargetsTrain = get_data(data)
 
